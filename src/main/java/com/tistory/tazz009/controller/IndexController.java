@@ -1,17 +1,17 @@
 package com.tistory.tazz009.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
 
-	@RequestMapping(value = "/index.htm")
-    public ModelAndView indexPage() {
-        ModelAndView mav = new ModelAndView("/WEB-INF/views/index.jsp");
-        mav.addObject("theModelKey", "Spring says HI!");
-        return mav;
+	@RequestMapping(value="/index.htm", method=RequestMethod.GET)
+    public String indexPage(Model model) {
+        model.addAttribute("theModelKey", "Spring says HI!");
+        return "index";
     }
 	
 }
